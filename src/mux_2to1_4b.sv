@@ -1,25 +1,15 @@
-// Code your design here
-/*
-* Instituto Tecnológico de Costa Rica
-* Prof. Dr.-ing. Pablo Mendoza Ponce
-* Rev. 1 28 July 2024
-*/
-module mux_2to1_4b(
-  input logic [3:0]  a_i,
-  input logic [3:0]  b_i,
-  input logic        s_i,
-  output logic [3:0] q_o);
+`timescale 1ns/1ps
+`default_nettype none
 
-  timeunit 1ns;
-  timeprecision 1ps;
-  
-  always_comb begin
-    if (s_i ==1'b0) begin 
-      q_o = a_i;
-    end else begin
-      q_o = b_i;
-    end
-  end
-  //<<<<<<<<<<<< HDL DESCRIPTION HERE >>>>>>>>>>>>>>>>>
-  
+module mux_2to1_4b (
+    input  wire [3:0] a_i,
+    input  wire [3:0] b_i,
+    input  wire       s_i,
+    output wire [3:0] q_o
+);
+
+    assign q_o = s_i ? b_i : a_i;
+
 endmodule
+
+`default_nettype wire
